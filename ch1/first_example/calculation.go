@@ -5,6 +5,18 @@ import (
 	"math"
 )
 
+type PerformanceCalculator struct {
+	performance Performance
+	play        Play
+}
+
+func NewPerformanceCalculator(aPerformance Performance, play Play) *PerformanceCalculator {
+	return &PerformanceCalculator{
+		performance: aPerformance,
+		play:        play,
+	}
+}
+
 func totalAmount(data []Performance) int {
 	var result = 0
 	for _, aPerformance := range data {
@@ -34,20 +46,24 @@ func volumeCreditsFor(aPerformance Performance) int {
 }
 
 func amountFor(aPerformance Performance) int {
+	return NewPerformanceCalculator(aPerformance, playFor(aPerformance)).amount()
+}
+
+func (c *PerformanceCalculator) amount() int {
 	var result = 0
 
-	switch aPerformance.Play.Type {
+	switch c.performance.Play.Type {
 	case "tragedy":
 		result = 40000
-		if aPerformance.Audience > 30 {
-			result += 1000 * (aPerformance.Audience - 30)
+		if c.performance.Audience > 30 {
+			result += 1000 * (c.performance.Audience - 30)
 		}
 	case "comedy":
 		result = 30000
-		if (aPerformance.Audience) > 20 {
-			result += 10000 + 500*(aPerformance.Audience-20)
+		if (c.performance.Audience) > 20 {
+			result += 10000 + 500*(c.performance.Audience-20)
 		}
-		result += 300 * aPerformance.Audience
+		result += 300 * c.performance.Audience
 	default:
 		errors.New("unknown type")
 	}

@@ -41,7 +41,10 @@
 3. 已將不同功能獨立開了，可以將其放置在對應的 folder/file 裡面。
 4. 建立仲介資料的內容，再移出去成另一個 function，renderHTML 可以接它的回傳 statementData 直接使用，這個手法叫做 Replace loop with pipeline
 
-## (session#3) first example refactoring steps: support Open-Close
+## (session#3) first example refactoring steps: support Open-Close (Polymorphic)
+1. function amountFor() and volumeCreditsFor() 內部有許多 switch by play type，需要改成動態的，方便未來擴展。
+
+
 
 ## 用到了哪些方法
 * Extract Method

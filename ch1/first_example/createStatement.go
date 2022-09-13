@@ -14,8 +14,9 @@ func createStatementData(invoice []*Invoice) StatementData {
 func (i *Invoice) mapToEnrichPerformance() {
 	for k, v := range i.Performances {
 		// v is local temp variable, not actual Performance
-		i.Performances[k].Play = playFor(v)
-		i.Performances[k].Play.Amount = amountFor(i.Performances[k])
+		var calculator = NewPerformanceCalculator(v, playFor(v))
+		i.Performances[k].Play = calculator.play
+		i.Performances[k].Play.Amount = calculator.amount()
 		i.Performances[k].Play.Credits = volumeCreditsFor(i.Performances[k])
 	}
 	return
