@@ -11,7 +11,7 @@ type StatementData struct {
 	TotalCredits int
 }
 
-func statement(invoice []*Invoice) string {
+func Statement(invoice []*Invoice) string {
 	return renderPlainText(createStatementData(invoice))
 }
 

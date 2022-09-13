@@ -42,8 +42,9 @@
 4. 建立仲介資料的內容，再移出去成另一個 function，renderHTML 可以接它的回傳 statementData 直接使用，這個手法叫做 Replace loop with pipeline
 
 ## (session#3) first example refactoring steps: support Open-Close (Polymorphic)
-1. function amountFor() and volumeCreditsFor() 內部有許多 switch by play type，需要改成動態的，方便未來擴展。
-
+-> function amountFor() and volumeCreditsFor() 內部有許多 switch by play type，需要改成動態的，方便未來擴展。
+1. 創建一個 Performance Calculator struct，把原本計算的 functions 移植到它身上。
+2. enrichPerformance 就可以從 calculator 身上拿到資訊
 
 
 ## 用到了哪些方法

@@ -25,22 +25,22 @@ type Performance struct {
 	Amount   int    `json:"amount"`
 }
 
-var plays map[string]Play
-var invoices []*Invoice
-var data StatementData
+var Plays map[string]Play
+var Invoices []*Invoice
+var Data StatementData
 
 func main() {
 
 	content, err := ioutil.ReadFile("invoice.json")
-	err = json.Unmarshal(content, &invoices)
+	err = json.Unmarshal(content, &Invoices)
 
 	content2, err := ioutil.ReadFile("plays.json")
-	err = json.Unmarshal(content2, &plays)
+	err = json.Unmarshal(content2, &Plays)
 
 	if err != nil {
 		fmt.Errorf("read json file err:%s", err)
 	}
-	result := statement(invoices)
+	result := Statement(Invoices)
 	fmt.Print(result)
 
 }

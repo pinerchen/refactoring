@@ -1,14 +1,14 @@
 package main
 
 func createStatementData(invoice []*Invoice) StatementData {
-	data.Customer = invoice[0].Customer
+	Data.Customer = invoice[0].Customer
 	// as javascript map()
 	invoice[0].mapToEnrichPerformance()
-	data.Performances = invoice[0].Performances
-	data.TotalAmount = totalAmount(data.Performances)
-	data.TotalCredits = totalVolumeCredits(data.Performances)
+	Data.Performances = invoice[0].Performances
+	Data.TotalAmount = totalAmount(Data.Performances)
+	Data.TotalCredits = totalVolumeCredits(Data.Performances)
 
-	return data
+	return Data
 }
 
 func (i *Invoice) mapToEnrichPerformance() {
@@ -23,5 +23,5 @@ func (i *Invoice) mapToEnrichPerformance() {
 }
 
 func playFor(aPerformance Performance) Play {
-	return plays[aPerformance.PlayID]
+	return Plays[aPerformance.PlayID]
 }
